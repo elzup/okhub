@@ -1,8 +1,8 @@
 {
-	"name": "create-react-app",
+	"name": "okhub",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://elzup.github.io/react-app-boilerplate",
+	"homepage": "https://elzup.github.io/okhub",
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
@@ -46,9 +46,6 @@
 		"s2s-plugins-redux": "^0.3.2"
 	},
 	"lint-staged": {
-		"src/**/*.js": [
-			"prettier --config ./.prettierrc --write",
-			"git add"
-		]
+		"src/**/*.js": ["prettier --config ./.prettierrc --write", "git add"]
 	}
 }
