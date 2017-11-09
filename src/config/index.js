@@ -1,40 +1,41 @@
 // @flow
 
-const { NODE_ENV, REACT_APP_HOGE, REACT_APP_FUGA_URL } = process.env
+const {
+	NODE_ENV,
+	REACT_APP_GITHUB_AUTH_CLIENT_ID,
+	REACT_APP_GITHUB_AUTH_CLIENT_SECRET,
+} = process.env
 
-if (REACT_APP_HOGE === null || REACT_APP_FUGA_URL === null || !NODE_ENV) {
-	console.error('Configuration not completed. must setup envioraments.')
+if (
+	!REACT_APP_GITHUB_AUTH_CLIENT_ID ||
+	!REACT_APP_GITHUB_AUTH_CLIENT_SECRET ||
+	!NODE_ENV
+) {
 	console.error(process.env)
+	throw new Error('Configuration not enouth. you need setup environments.')
 }
 
 type Config = {
 	+isDev: boolean,
-	+hoge: string,
-	+fugaURL: string,
-	+admin: {
-		+name: string,
-		+countMax: number,
+	+github: {
+		+authUrl: string,
+		+clientId: string,
+		+clientSecret: string,
 	},
 }
+
 const isDev = NODE_ENV === 'development'
 
-const configDevelopment = {
-	admin: {
-		name: 'admin',
-		countMax: 100,
-	},
-}
-const configProduction = {
-	admin: {
-		name: 'proadmin',
-		countMax: 100,
-	},
-}
+const configDevelopment = {}
+const configProduction = {}
 
 const config: Config = {
 	isDev,
-	hoge: REACT_APP_HOGE,
-	fugaURL: REACT_APP_FUGA_URL,
+	github: {
+		authUrl: 'https://github.com/login/oauth/authorize?client_id=',
+		clientId: REACT_APP_GITHUB_AUTH_CLIENT_ID,
+		clientSecret: REACT_APP_GITHUB_AUTH_CLIENT_SECRET,
+	},
 	...(isDev ? configDevelopment : configProduction),
 }
 
