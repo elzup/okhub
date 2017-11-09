@@ -28,3 +28,50 @@ export type Item = {
 	id: number,
 	name: string,
 }
+
+type ID = number
+type URI = string
+
+export type Organization = {
+	avatarUrl: URI,
+	description: String,
+	email: String,
+	id: ID,
+	location: String,
+	login: String,
+	members: number[],
+	name: String,
+	newTeamResourcePath: URI,
+	newTeamUrl: URI,
+	repositories: number[],
+	resourcePath: URI,
+	teamsUrl: URI,
+	url: URI,
+	viewerCanAdminister: boolean,
+	viewerCanCreateProjects: boolean,
+	viewerCanCreateRepositories: boolean,
+	viewerCanCreateTeams: boolean,
+	viewerIsAMember: boolean,
+	websiteUrl: URI,
+}
+
+export type User = {
+	id: number,
+	avatarUrl: String,
+	name: string,
+	url: string,
+}
+
+export type Repository = {
+	id: number,
+	name: string,
+	description: string,
+	issues: number[],
+}
+
+export type Issue = {
+	id: number,
+	author: number,
+	bodyText: string,
+	closed: boolean,
+}
