@@ -1,6 +1,6 @@
 // @flow
-import type { State as ItemsContainer } from '../containers/ItemsContainer/reducer'
+import type { State as System } from '../containers/System/reducer'
 
 export type State = {
-	ItemsContainer: ItemsContainer,
+	System: System,
 }

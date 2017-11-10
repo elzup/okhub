@@ -75,3 +75,7 @@ export type Issue = {
 	bodyText: string,
 	closed: boolean,
 }
+
+export type System = {
+	token: ?string,
+}
