@@ -13,7 +13,8 @@ if (
 	!REACT_APP_GITHUB_AUTH_CLIENT_ID ||
 	!REACT_APP_GITHUB_AUTH_CLIENT_SECRET ||
 	!NODE_ENV ||
-	PUBLIC_URL === undefined
+	PUBLIC_URL === undefined ||
+	PUBLIC_URL === null
 ) {
 	console.error(process.env)
 	throw new Error('Configuration not enouth. you need setup environments.')
@@ -26,6 +27,7 @@ type Config = {
 		+clientId: string,
 		+clientSecret: string,
 	},
+	+publicUrl: string,
 }
 
 const isDev = NODE_ENV === 'development'
@@ -44,6 +46,7 @@ const config: Config = {
 		clientId,
 		clientSecret,
 	},
+	publicUrl: PUBLIC_URL,
 	...(isDev ? configDevelopment : configProduction),
 }
 

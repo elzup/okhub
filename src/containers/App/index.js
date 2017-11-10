@@ -1,22 +1,18 @@
 // @flow
 import React from 'react'
-import config from '../../config'
+import PreHome from '../PreHome'
+import AuthEnd from '../AuthEnd'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 // import Home from '../../components/Home'
 
 const IssuePage = ({ match }) => <div>IssuePage {match.params.id}</div>
 
-const Home = () => {
-	return <a href={config.github.authUrl}>Github Login</a>
-}
-
 const App = () => (
 	<Router>
 		<div>
-			<Route exact path="/" component={Home} />
-			<Route path="/authed/" component={IssuePage} />
-			<Route path="/authed/:id" component={IssuePage} />
+			<Route exact path="/" component={PreHome} />
+			<Route path="/authed" component={AuthEnd} />
 		</div>
 	</Router>
 )
