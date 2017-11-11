@@ -77,5 +77,6 @@ export type Issue = {
 }
 
 export type System = {
+	rehydrated: boolean,
 	token: ?string,
 }

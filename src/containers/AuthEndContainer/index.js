@@ -2,17 +2,19 @@
 import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
 import type { State } from '../../types'
-import config from '../../config'
 
 type Props = {}
+type OProps = {}
 
 class Container extends React.Component<Props> {
 	render() {
-		return <a href={config.github.authUrl}>Login with GitHub</a>
+		return <div />
 	}
 }
 
-const ms = (state: State) => ({})
+const ms = (state: State, ownProps: OProps) => {
+	return {}
+}
 
 const conn: Connector<{}, Props> = connect(ms, {})
 
