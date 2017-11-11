@@ -44,13 +44,10 @@
 		"lint-staged": "^4.3.0",
 		"prettier": "^1.7.4",
 		"react-test-renderer": "^16.0.0",
-		"s2s": "^0.11.0",
+		"s2s": "^0.12.1",
 		"s2s-plugins-redux": "^0.3.2"
 	},
 	"lint-staged": {
-		"src/**/*.js": [
-			"prettier --config ./.prettierrc --write",
-			"git add"
-		]
+		"src/**/*.js": ["prettier --config ./.prettierrc --write", "git add"]
 	}
 }
