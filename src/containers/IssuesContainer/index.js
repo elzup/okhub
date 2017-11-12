@@ -2,7 +2,6 @@
 import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
 import type { State } from '../../types'
-import * as selectors from './selectors'
 
 type Props = {}
 
