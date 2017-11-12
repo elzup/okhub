@@ -1,41 +1,26 @@
 // @flow
-import * as React from 'react'
-import { Provider } from 'react-redux'
-import ReactDOM from 'react-dom'
-import registerServiceWorker from './config/registerServiceWorker'
-import configureStore from './store'
-import queryString from 'query-string'
 
-import config from './config'
+type S = { a: number }
+var a: S = { a: 0 }
 
-import { saveToken } from './containers/System/logic'
+type X = number
+var b: X = 0
 
-import HomeContainer from './containers/HomeContainer'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+var c
 
-import './config/init'
+var d = {}
 
-console.log(config)
+type Y = string
+let e: Y = ''
 
-const store = configureStore()
-const rootEl = document.getElementById('root')
-
-const AuthEnd = props => {
-	const params = queryString.parse(props.location.search)
-	return <Route onEnter={saveToken(params.token)} />
+type Z = {
+	a: string,
+	b: string,
 }
 
-if (rootEl !== null) {
-	ReactDOM.render(
-		<Provider store={store}>
-			<Router>
-				<div>
-					<Route exact path="/" component={HomeContainer} />
-					<Route path="/authed" component={AuthEnd} />
-				</div>
-			</Router>
-		</Provider>,
-		rootEl,
-	)
-	registerServiceWorker()
+type Z2 = { a: string, b: string }
+
+const f = {
+	a: 'this is a',
+	b: 'this is b',
 }
