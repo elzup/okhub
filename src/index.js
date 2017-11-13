@@ -1,17 +1,16 @@
 // @flow
 import * as React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
-import registerServiceWorker from './config/registerServiceWorker'
-import configureStore from './store'
 import queryString from 'query-string'
 
+import registerServiceWorker from './config/registerServiceWorker'
+import configureStore from './store'
 import config from './config'
 
-import { saveToken } from './containers/System/logic'
-
 import HomeContainer from './containers/HomeContainer'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import AuthEndContainer from './containers/AuthEndContainer'
 
 import './config/init'
 
@@ -21,8 +20,8 @@ const store = configureStore()
 const rootEl = document.getElementById('root')
 
 const AuthEnd = props => {
-	const params = queryString.parse(props.location.search)
-	return <Route onEnter={saveToken(params.token)} />
+	const { token } = queryString.parse(props.location.search)
+	return <AuthEndContainer token={token} />
 }
 
 if (rootEl !== null) {

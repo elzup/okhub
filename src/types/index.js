@@ -4,12 +4,17 @@ import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux'
 import type { Action as _Action } from './action'
 import type { State as _State } from './state'
 
+type _persist = {
+	version: number,
+	rehydrated: boolean,
+}
+
 type RehydrateAction = {
 	type: 'persist/REHYDRATE',
 	payload: _State,
 }
 
-export type State = _State
+export type State = { ..._State, _persist: _persist }
 export type Action = _Action | RehydrateAction
 
 export type Reducer = (state: State, action: Action) => State

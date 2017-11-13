@@ -9,6 +9,7 @@ export function saveToken(token: string): ThunkAction {
 	return async (dispatch, getState) => {
 		// HACKME:
 		while (!getState().System.rehydrated) {
+			console.log('try')
 			await sleep(100)
 		}
 		await dispatch(receiveToken(token))
