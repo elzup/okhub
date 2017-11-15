@@ -1,7 +1,9 @@
 // @flow
-import { combineReducers } from 'redux'
-import ItemsContainer from './containers/ItemsContainer/reducer'
+import { combineReducers } from './config'
+import IssuesContainer from './containers/IssuesContainer/reducer'
+import System from './containers/System/reducer'
 
 export default combineReducers({
-	ItemsContainer,
+	IssuesContainer,
+	System,
 })

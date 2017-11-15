@@ -1,25 +1,38 @@
 // @flow
 import * as React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
-import App from './containers/App'
+import queryString from 'query-string'
+
 import registerServiceWorker from './config/registerServiceWorker'
 import configureStore from './store'
 import config from './config'
-// import { thunkWorld } from './containers/ScreensContainer/logic'
+
+import HomeContainer from './containers/HomeContainer'
+import AuthEndContainer from './containers/AuthEndContainer'
 
 import './config/init'
 
 console.log(config)
 
 const store = configureStore()
-// store.dispatch(thunkWorld())
 const rootEl = document.getElementById('root')
+
+const AuthEnd = props => {
+	const { token } = queryString.parse(props.location.search)
+	return <AuthEndContainer token={token} />
+}
 
 if (rootEl !== null) {
 	ReactDOM.render(
 		<Provider store={store}>
-			<App />
+			<Router>
+				<div>
+					<Route exact path="/" component={HomeContainer} />
+					<Route path="/authed" component={AuthEnd} />
+				</div>
+			</Router>
 		</Provider>,
 		rootEl,
 	)

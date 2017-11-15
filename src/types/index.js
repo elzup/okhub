@@ -4,6 +4,11 @@ import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux'
 import type { Action as _Action } from './action'
 import type { State as _State } from './state'
 
+export type _persist = {
+	version: number,
+	rehydrated: boolean,
+}
+
 type RehydrateAction = {
 	type: 'persist/REHYDRATE',
 	payload: _State,
@@ -12,6 +17,11 @@ type RehydrateAction = {
 export type State = _State
 export type Action = _Action | RehydrateAction
 
+export type Reducer = (state: State, action: Action) => State
+export type Reducers = {
+	[key: string]: Reducer,
+}
+
 export type GetState = () => State
 
 export type ThunkAction = (
@@ -19,7 +29,7 @@ export type ThunkAction = (
 	getState: GetState,
 ) => void | Promise<void>
 
-type ThunkDispatch<A> = ThunkAction => A
+type ThunkDispatch<A> = (ta: ThunkAction) => A
 
 export type Dispatch = ReduxDispatch<Action> & ThunkDispatch<Action>
 export type Store = ReduxStore<State, Action, Dispatch>
@@ -74,4 +84,8 @@ export type Issue = {
 	author: number,
 	bodyText: string,
 	closed: boolean,
+}
+
+export type System = {
+	token: ?string,
 }

@@ -1,4 +1,17 @@
 // @flow
-import { combineReducers } from 'redux'
+import type { Action } from '../../types'
+import { Actions } from './actionTypes'
 
-export default combineReducers({})
+export type State = {}
+
+export const initialState: State = {}
+
+export default function(
+  state: State = initialState,
+  action: Action
+): Exact<State> {
+  switch (action.type) {
+    default:
+      return state
+  }
+}

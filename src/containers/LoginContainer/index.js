@@ -1,22 +1,14 @@
 // @flow
 import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
-import type { State, Item } from '../../types'
+import type { State } from '../../types'
+import config from '../../config'
 
-type Props = {
-	items: Item[],
-}
+type Props = {}
 
 class Container extends React.Component<Props> {
 	render() {
-		const { props } = this
-		return (
-			<div>
-				{props.items.map(item => {
-					return <div>{item.name} </div>
-				})}
-			</div>
-		)
+		return <a href={config.github.authUrl}>Login with GitHub</a>
 	}
 }
 
