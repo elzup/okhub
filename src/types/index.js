@@ -80,9 +80,10 @@ export type Repository = {
 }
 
 export type Issue = {
-	id: number,
-	author: number,
-	bodyText: string,
+	id: string,
+	body: string,
+	title: string,
+	url: string,
 	closed: boolean,
 }
 

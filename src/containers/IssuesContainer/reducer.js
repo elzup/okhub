@@ -2,7 +2,7 @@
 import type { Action, Issue } from '../../types'
 import { Actions } from './actionTypes'
 
-export type State = number[]
+export type State = string[]
 export const initialState: State = []
 
 export default function(state: State = initialState, action: Action): State {
