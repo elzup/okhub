@@ -9,8 +9,6 @@ export default function(state: State = initialState, action: Action): State {
 	switch (action.type) {
 		case Actions.RECEIVE_TOKEN:
 			return { ...state, token: action.token }
-		case 'persist/REHYDRATE':
-			return { ...state, rehydrated: true }
 		default:
 			return state
 	}

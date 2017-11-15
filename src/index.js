@@ -20,8 +20,8 @@ const store = configureStore()
 const rootEl = document.getElementById('root')
 
 const AuthEnd = props => {
-	const { token } = queryString.parse(props.location.search)
-	return <AuthEndContainer token={token} />
+	const { code } = queryString.parse(props.location.search)
+	return <AuthEndContainer token={code} />
 }
 
 if (rootEl !== null) {

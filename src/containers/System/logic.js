@@ -13,6 +13,6 @@ export function saveToken(token: string): ThunkAction {
 			await sleep(100)
 		}
 		await dispatch(receiveToken(token))
-		window.open(config.publicUrl + '/')
+		window.location.href = config.publicUrl + '/'
 	}
 }
