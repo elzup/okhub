@@ -8,7 +8,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms))
 export function saveToken(token: string): ThunkAction {
 	return async (dispatch, getState) => {
 		// HACKME:
-		while (!getState().System.rehydrated) {
+		while (!getState()._persist.rehydrated) {
 			console.log('try')
 			await sleep(100)
 		}
