@@ -10,16 +10,17 @@ import type { Issue } from '../types'
 // const host = 'http://localhost:3001'
 // const TIMEOUT = 5000
 
-const baseHeaders = {
-	'Content-Type': 'application/json',
-	Authorization: 'bearer',
-}
-
-function requestQl(query) {
-	const questionsRequest = request.post(config.github.api.url).set(baseHeaders)
+function requestQl(query: string, token: string) {
+	const questionsRequest = request.post(config.github.api.url).set({
+		Authorization: `bearer ${token}`,
+	})
 	return new Promise((resolve, reject) => {
 		questionsRequest.end((err, res) => {
-			resolve(err || res)
+			if (err) {
+				reject(err)
+			} else {
+				resolve(res)
+			}
 		})
 	})
 }
@@ -28,9 +29,9 @@ type FetchIssueCallback = {
 	issues: Issue[],
 }
 
-export async function fetchIssues(): Promise<FetchIssueCallback> {
+export async function fetchIssues(token: string): Promise<FetchIssueCallback> {
 	const query = `
-	query {
+query {
   repository(owner:"cpslab", name:"ok") {
     owner{
       login
@@ -60,7 +61,9 @@ export async function fetchIssues(): Promise<FetchIssueCallback> {
       }
     }
   }
-}`
-	const res = await requestQl(query)
-	return normalizeIssue(res.body)
+}
+`
+	const res = await requestQl(query, token)
+	console.log(res)
+	return normalizeIssue(JSON.parse(res.body))
 }
