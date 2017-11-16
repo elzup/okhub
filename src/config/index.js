@@ -30,7 +30,7 @@ type Config = {
 		+clientId: string,
 		+clientSecret: string,
 		+api: {
-			+host: string,
+			+url: string,
 		},
 	},
 	+publicUrl: string,

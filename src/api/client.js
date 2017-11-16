@@ -16,7 +16,7 @@ const baseHeaders = {
 }
 
 function requestQl(query) {
-	const questionsRequest = request.post().set(baseHeaders)
+	const questionsRequest = request.post(config.github.api.url).set(baseHeaders)
 	return new Promise((resolve, reject) => {
 		questionsRequest.end((err, res) => {
 			resolve(err || res)
