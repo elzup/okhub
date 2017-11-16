@@ -29,6 +29,9 @@ type Config = {
 		+authUrl: string,
 		+clientId: string,
 		+clientSecret: string,
+		+api: {
+			+host: string,
+		},
 	},
 	+publicUrl: string,
 }
@@ -48,6 +51,9 @@ const config: Config = {
 		authUrl,
 		clientId,
 		clientSecret,
+		api: {
+			url: 'https://api.github.com/graphql',
+		},
 	},
 	publicUrl: PUBLIC_URL,
 	...(isDev ? configDevelopment : configProduction),
