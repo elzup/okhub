@@ -14,7 +14,7 @@ type RehydrateAction = {
 	payload: _State,
 }
 
-export type State = _State
+export type State = _State & { _persist: _persist }
 export type Action = _Action | RehydrateAction
 
 export type Reducer = (state: State, action: Action) => State

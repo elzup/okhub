@@ -8,6 +8,12 @@ export const initialState: State = {}
 
 export default function(state: State = initialState, action: Action): State {
 	switch (action.type) {
+		case Actions.RECEIVE_ISSUES: {
+			return {
+				...state,
+				...action.issues.reduce((p, c) => ({ ...p, [c.id]: c }), {}),
+			}
+		}
 		default:
 			return state
 	}
